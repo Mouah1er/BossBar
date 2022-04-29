@@ -1,5 +1,6 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.20'
+    id 'maven-publish'
 }
 
 group 'fr.twah2em'
@@ -27,6 +28,26 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation "fr.twah2em:mc-reflection:1.0-SNAPSHOT"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = project.group
+            artifactId = "BossBar"
+            version = "1.0-SNAPSHOT"
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "https://maven.pkg.jetbrains.space/spigottools/p/spigot-tools/tools"
+            credentials {
+                username = property("spaceUsername")
+                password = property("spacePassword")
+            }
+        }
+    }
 }
 
 libsDirName = "${property("libs-dir-name")}"
