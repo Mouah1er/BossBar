@@ -11,7 +11,6 @@ import org.bukkit.Location
 import org.bukkit.craftbukkit.v1_8_R3.CraftWorld
 import org.bukkit.entity.Player
 
-
 val bossBars: BiMap<Player, BossBar> = HashBiMap.create()
 
 fun createBar(player: Player, title: String, health: Float): BossBar {
