@@ -1,20 +1,17 @@
-package fr.twah2em.bossbars.engine
+package fr.twah2em.bossbars
 
 import com.google.common.collect.BiMap
 import com.google.common.collect.HashBiMap
-import fr.twah2em.bossbars.Main
 import fr.twah2em.bossbars.task.BossBarsBukkitRunnable
+import fr.twah2em.mcreflection.getPacket
 import fr.twah2em.mcreflection.sendPacket
-import net.minecraft.server.v1_8_R3.EntityWither
-import net.minecraft.server.v1_8_R3.PacketPlayOutEntityDestroy
 import org.bukkit.Location
-import org.bukkit.craftbukkit.v1_8_R3.CraftWorld
 import org.bukkit.entity.Player
 
 val bossBars: BiMap<Player, BossBar> = HashBiMap.create()
 
-fun createBar(player: Player, title: String, health: Float): BossBar {
-    val bar = BossBar(player, EntityWither((player.world as CraftWorld).handle), title, health)
+fun createBar(player: Player, title: String, health: Double): BossBar {
+    val bar = BossBar(player, title, health)
     bossBars[player] = bar
 
     return bar
@@ -23,9 +20,9 @@ fun createBar(player: Player, title: String, health: Float): BossBar {
 fun removeBar(player: Player) {
     val bar = bossBars.remove(player)
 
-    if (bar?.entityWither == null) return
+    if (bar?.entityWither?.nmsEntityWither == null) return
 
-    sendPacket(player, PacketPlayOutEntityDestroy(bar.entityWither.id))
+    sendPacket(player, getPacket("PacketPlayOutEntityDestroy", bar.entityWither.id))
 }
 
 fun bossBar(player: Player): BossBar? {

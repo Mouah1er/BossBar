@@ -1,6 +1,6 @@
 package fr.twah2em.bossbars
 
-import fr.twah2em.bossbars.engine.startBossBarsBukkitRunnable
+import fr.twah2em.bossbars.listeners.PlayerQuitListener
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
@@ -10,9 +10,11 @@ class Main : JavaPlugin() {
     }
 
     override fun onEnable() {
-        instance = this;
+        instance = this
+
         logger.info("BossBars enabled")
 
+        server.pluginManager.registerEvents(PlayerQuitListener(), this)
         startBossBarsBukkitRunnable()
     }
 }
