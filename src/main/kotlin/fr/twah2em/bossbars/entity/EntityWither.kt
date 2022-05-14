@@ -16,8 +16,8 @@ class EntityWither(
         constructor(NMSClass("EntityWither")!!, arrayOf(handle(world)!!.javaClass))!!
 
     val nmsEntityWither = invokeConstructor(nmsEntityWitherConstructor)!!
-    val dataWatcher = DataWatcher(invokeMethod(method(nmsEntityWither.javaClass, "getDataWatcher")!!, nmsEntityWither))
-    val id = invokeMethod(method(nmsEntityWither.javaClass, "getId")!!, nmsEntityWither) as Int
+    val dataWatcher = DataWatcher(invokeMethod(method(nmsEntityWither.javaClass, "getDataWatcher"), nmsEntityWither))
+    val id = invokeMethod(method(nmsEntityWither.javaClass, "getId"), nmsEntityWither) as Int
 
     var location = receiver.location!!
         set(value) {
@@ -32,7 +32,7 @@ class EntityWither(
                     Double::class.java,
                     Float::class.java,
                     Float::class.java
-                )!!,
+                ),
                 nmsEntityWither,
                 witherLocation.x,
                 witherLocation.y,
@@ -52,7 +52,7 @@ class EntityWither(
                     nmsEntityWither.javaClass,
                     "setCustomName",
                     String::class.java
-                )!!,
+                ),
                 nmsEntityWither,
                 value
             )
@@ -62,7 +62,7 @@ class EntityWither(
                     nmsEntityWither.javaClass,
                     "setCustomNameVisible",
                     Boolean::class.java
-                )!!,
+                ),
                 nmsEntityWither,
                 true
             )
@@ -78,7 +78,7 @@ class EntityWither(
                     nmsEntityWither.javaClass,
                     "setHealth",
                     Double::class.java
-                )!!,
+                ),
                 nmsEntityWither,
                 value
             )
@@ -86,7 +86,7 @@ class EntityWither(
             sendPacket(receiver, getPacket("PacketPlayOutEntityMetadata", nmsEntityWither))
         }
 
-    var maxHealth = invokeMethod<Double>(method(nmsEntityWither.javaClass, "getMaxHealth")!!, nmsEntityWither)
+    var maxHealth = invokeMethod<Double>(method(nmsEntityWither.javaClass, "getMaxHealth"), nmsEntityWither)
 
     var isInvisible = true
         set(value) {
@@ -96,7 +96,7 @@ class EntityWither(
                     nmsEntityWither.javaClass,
                     "setInvisible",
                     Boolean::class.java
-                )!!,
+                ),
                 nmsEntityWither,
                 value
             )

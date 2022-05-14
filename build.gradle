@@ -1,10 +1,11 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.6.21'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version "7.1.2"
 }
 
 group 'fr.twah2em'
-version '1.4-SNAPSHOT'
+version '1.4.3-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -24,7 +25,7 @@ dependencies {
     compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "fr.twah2em:mc-reflection:1.4.1-SNAPSHOT"
+    implementation "fr.twah2em:mc-reflection:1.5.0-SNAPSHOT"
 }
 
 publishing {

@@ -11,7 +11,7 @@ class DataWatcher(private val nmsDataWatcher: Any) {
                 "watch",
                 Int::class.java,
                 value::class.java
-            )!!,
+            ),
             nmsDataWatcher,
             index,
             value
