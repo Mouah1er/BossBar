@@ -10,14 +10,8 @@ version '1.4.3-SNAPSHOT'
 repositories {
     mavenCentral()
 
-    maven {
-        url "https://maven.pkg.jetbrains.space/spigottools/p/spigot-tools/tools"
-        credentials {
-            username = property("spaceUsername")
-            password = property("spacePassword")
-        }
-    }
-
+    maven { url 'https://jitpack.io' }
+    
     mavenLocal()
 }
 
@@ -25,7 +19,7 @@ dependencies {
     compileOnly 'org.spigotmc:spigot:1.8.8-R0.1-SNAPSHOT'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-    implementation "fr.twah2em:mc-reflection:1.5.0-SNAPSHOT"
+    implementation 'com.github.Mouah1er:MCReflection:1.0.0'
 }
 
 publishing {
