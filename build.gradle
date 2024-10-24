@@ -22,26 +22,6 @@ dependencies {
     implementation 'com.github.Mouah1er:MCReflection:1.0.0'
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = project.group
-            artifactId = "BossBar"
-            version = project.version
-            from components.java
-        }
-    }
-    repositories {
-        maven {
-            url "https://maven.pkg.jetbrains.space/spigottools/p/spigot-tools/tools"
-            credentials {
-                username = property("spaceUsername")
-                password = property("spacePassword")
-            }
-        }
-    }
-}
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
